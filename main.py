@@ -7,16 +7,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-# dtype=str on Phone Number stops pandas from reading it as an int and
-# silently dropping the leading 0 (e.g. 03001234567 -> 3001234567).
 df = pd.read_csv(
-    "selenium_google_form_sample_data.csv",
+    "selenium_google_form_sample_data.csv", #paste your exact file name here
     dtype={"Phone Number": str},
 )
 
 driver = webdriver.Chrome()
 wait = WebDriverWait(driver, 15)
 
+#paste your link here
 form_url = "https://docs.google.com/forms/d/e/1FAIpQLSeqVr5L6-SmgOAAX5ddk-qAT2z8NzHKzSLtXMavN6wNizMAJA/viewform?usp=dialog"
 
 
@@ -48,7 +47,7 @@ def get_input_by_question(driver, wait, question_text):
 
 results = []
 
-for index, row in df.head(3).iterrows():
+for index, row in df.iterrows():
     name = str(row["Name"])
     number = str(row["Phone Number"])
     email = str(row["Email Address"])
