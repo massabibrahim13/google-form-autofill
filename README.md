@@ -7,7 +7,7 @@ Fills out a Google Form automatically using rows from a CSV file.
 | File | What it's for |
 |---|---|
 | `main.py` | The main script — fills and submits the form |
-| `debug_form.py` | Run this only if `fill_google_form.py` times out or fails |
+| `debug_form.py` | Run this only if `main.py` times out or fails |
 | `selenium_google_form_sample_data.csv` | Your data — one row per person |
 
 ## Setup (one time)
@@ -24,7 +24,7 @@ Fills out a Google Form automatically using rows from a CSV file.
 Create a CSV with these exact column headers: `Name`, `Phone Number`, `Email Address`. One row per person you want to submit.
 
 ### Step 2 — Point the script at your data file
-Open `fill_google_form.py` and find this line near the top:
+Open `main.py` and find this line near the top:
 ```python
 df = pd.read_csv(
     "selenium_google_form_sample_data.csv",
@@ -57,7 +57,7 @@ for index, row in df.head(3).iterrows():
 
 ### Step 5 — Run it
 ```
-python fill_google_form.py
+python main.py
 ```
 A Chrome window will open by itself and submit one form response per row. Progress prints to the console as it goes.
 
